@@ -1,4 +1,4 @@
-package com.lms.employee.exception;
+package com.lms.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,4 +10,9 @@ public class GlobalExceptionHandler {
 	    public ResponseEntity<String> handleEmployeeNotFound(EmployeeNotFoundException ex) {
 	        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
 	    }
+	 @ExceptionHandler(LeaveNotFoundException.class)
+	 public ResponseEntity<String>handleLeaveNotFound(LeaveNotFoundException ex)
+	 {
+		 return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+	 }
 }

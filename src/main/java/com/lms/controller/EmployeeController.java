@@ -1,10 +1,10 @@
-package com.lms.employee.controller;
+package com.lms.controller;
 
-import com.lms.employee.dto.EmployeeRequestDTO;
-import com.lms.employee.dto.EmployeeResponseDTO;
-import com.lms.employee.entity.Employee;
-import com.lms.employee.service.EmployeeService;
-import com.lms.employee.util.EmployeeMapper;
+import com.lms.dto.EmployeeRequestDTO;
+import com.lms.dto.EmployeeResponseDTO;
+import com.lms.entity.Employee;
+import com.lms.service.EmployeeService;
+import com.lms.util.EmployeeMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<EmployeeResponseDTO> createEmployee(@RequestBody EmployeeRequestDTO dto) {
         Employee saved = employeeService.saveEmployee(EmployeeMapper.toEntity(dto));
         return ResponseEntity.ok(EmployeeMapper.toResponseDTO(saved));
@@ -44,7 +44,7 @@ public class EmployeeController {
         return ResponseEntity.ok("Employee deleted successfully");
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<EmployeeResponseDTO>> getAllEmployees() {
         List<EmployeeResponseDTO> employees = employeeService.getAllEmployees()
                 .stream()

@@ -1,4 +1,4 @@
-package com.lms.employee.exception;
+package com.lms.exception;
 
 public class EmployeeNotFoundException extends RuntimeException {
 	 public EmployeeNotFoundException(String message) {

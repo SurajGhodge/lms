@@ -1,4 +1,4 @@
-package com.lms.employee.dto;
+package com.lms.dto;
 
 import java.time.LocalDate;
 

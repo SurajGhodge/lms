@@ -1,4 +1,4 @@
-package com.lms.employee.service;
+package com.lms.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lms.employee.entity.Employee;
-import com.lms.employee.exception.EmployeeNotFoundException;
-import com.lms.employee.repository.EmployeeRepo;
+import com.lms.entity.Employee;
+import com.lms.exception.EmployeeNotFoundException;
+import com.lms.repository.EmployeeRepo;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired

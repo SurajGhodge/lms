@@ -1,7 +1,7 @@
-package com.lms.employee.util;
-import com.lms.employee.dto.EmployeeRequestDTO;
-import com.lms.employee.dto.EmployeeResponseDTO;
-import com.lms.employee.entity.Employee;
+package com.lms.util;
+import com.lms.dto.EmployeeRequestDTO;
+import com.lms.dto.EmployeeResponseDTO;
+import com.lms.entity.Employee;
 
 public class EmployeeMapper {
 

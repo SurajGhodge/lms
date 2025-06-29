@@ -1,8 +1,8 @@
-package com.lms.employee.service;
+package com.lms.service;
 
 import java.util.List;
 
-import com.lms.employee.entity.Employee;
+import com.lms.entity.Employee;
 
 public interface EmployeeService {
 	Employee saveEmployee(Employee employee);
