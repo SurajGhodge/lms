@@ -15,4 +15,9 @@ public class GlobalExceptionHandler {
 	 {
 		 return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 	 }
+	 @ExceptionHandler(CompanyBranchNotFoundException.class)
+	 public ResponseEntity<String>handleCompanyBranchNotFound(CompanyBranchNotFoundException ex)
+	 {
+		 return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+	 }
 }

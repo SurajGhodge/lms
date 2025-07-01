@@ -6,30 +6,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Leaves {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long leaveId;
-	private long employeeId;
 	private boolean fd;
 	private boolean hd;
 	private LocalDate fromDate;
 	private LocalDate toDate;
 	private String reason;
+	private String status;//approved/rejected/cancelled/pending
+	private int days;
+	@ManyToOne
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
+
 	public long getLeaveId() {
 		return leaveId;
 	}
 	public void setLeaveId(long leaveId) {
 		this.leaveId = leaveId;
 	}
-	public long getEmployeeId() {
-		return employeeId;
-	}
-	public void setEmployeeId(long employeeId) {
-		this.employeeId = employeeId;
-	}
+	
 	public boolean isFd() {
 		return fd;
 	}
@@ -59,6 +61,24 @@ public class Leaves {
 	}
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
+	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	
 	

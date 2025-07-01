@@ -13,21 +13,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lms.dto.LeaveRequestDto;
+import com.lms.dto.LeaveResponceDto;
+import com.lms.entity.Employee;
 import com.lms.entity.Leaves;
+import com.lms.repository.EmployeeRepo;
 import com.lms.service.LeavesServiceImpl;
+import com.lms.util.LeaveMapper;
 @RestController
 @RequestMapping("/api/leaves")
 public class LeaveController {
 	  @Autowired
 	    private LeavesServiceImpl leavesServiceImpl;
+	  @Autowired
+	  private EmployeeRepo employeeRepo;
 
-	    // Apply for leave
-	    @PostMapping("/apply")
-	    public ResponseEntity<Leaves> applyLeave(@RequestBody Leaves leave) {
-	        Leaves savedLeave = leavesServiceImpl.applyLeave(leave);
-	        return ResponseEntity.ok(savedLeave);
-	    }
+	  @PostMapping("/apply/{employeeId}")
+	  public ResponseEntity<LeaveResponceDto> applyLeave(@PathVariable Long employeeId,
+	                                                     @RequestBody LeaveRequestDto request) {
+	      Employee emp = employeeRepo.findById(employeeId)
+	          .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeId));
 
+	      Leaves leave = leavesServiceImpl.applyLeave(emp.getId(), request);
+	      return ResponseEntity.ok(LeaveMapper.toResponceDto(leave));
+	  }
 	    // Update leave
 	    @PutMapping("/{leaveId}")
 	    public ResponseEntity<Leaves> updateLeave(@RequestBody Leaves updatedLeave, @PathVariable Long leaveId) {

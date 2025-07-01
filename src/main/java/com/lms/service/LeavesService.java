@@ -2,10 +2,11 @@ package com.lms.service;
 
 import java.util.List;
 
+import com.lms.dto.LeaveRequestDto;
 import com.lms.entity.Leaves;
 
 public interface LeavesService {
-Leaves applyLeave(Leaves leave);
+Leaves applyLeave(Long employeeId, LeaveRequestDto request);
 Leaves updateLeave(Leaves leave,Long leaveId);
 void deleteLeave(Long leaveId);
 Leaves getLeaveById(Long leaveId);

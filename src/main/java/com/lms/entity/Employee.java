@@ -1,16 +1,16 @@
 package com.lms.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
@@ -25,7 +25,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "employee_id", nullable = false, unique = true)
+//    @Column(name = "employee_id", nullable = false, unique = true)
     private String employeeId;
 
     private String name;
@@ -59,11 +59,23 @@ public class Employee {
 
     private String branch;
 
-    @Column(name = "blood_group")
+    public List<Leaves> getLeaves() {
+		return leaves;
+	}
+
+	public void setLeaves(List<Leaves> leaves) {
+		this.leaves = leaves;
+	}
+
+	@Column(name = "blood_group")
     private String bloodGroup;
 
     @Column(name = "reporting_authority")
     private String reportingAuthority;
+    
+    private int leaveBalance;
+    @OneToMany(mappedBy = "employee")
+    private List<Leaves> leaves = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -183,6 +195,14 @@ public class Employee {
 
 	public void setReportingAuthority(String reportingAuthority) {
 		this.reportingAuthority = reportingAuthority;
+	}
+
+	public int getLeaveBalance() {
+		return leaveBalance;
+	}
+
+	public void setLeaveBalance(int leaveBalance) {
+		this.leaveBalance = leaveBalance;
 	}
 
     // Getters and Setters (Lombok recommended)
