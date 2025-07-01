@@ -79,4 +79,39 @@ public class LeavesServiceImpl implements LeavesService {
 		return leavesRepository.findAll();
 	}
 
+	@Override
+	public void cancelLeave(Long leaveId) {
+		Leaves leave=leavesRepository.findById(leaveId).orElseThrow(()->new LeaveNotFoundException("Leave not found"));
+		if((leave.getStatus().equals("APPROVED") || leave.getStatus().equals("PENDING")))
+		{
+			Employee emp=leave.getEmployee();
+			emp.setLeaveBalance(emp.getLeaveBalance()+leave.getDays());
+			leave.setStatus("CANCELLED");
+			leavesRepository.save(leave);
+			employeeRepo.save(emp);
+		}
+		
+	}
+
+	@Override
+	public void approveLeave(Long leaveId) {
+		// TODO Auto-generated method stub
+		Leaves leave=leavesRepository.findById(leaveId).orElseThrow(()->new LeaveNotFoundException("Leave Not found"));
+		leave.setStatus("APPROVED");
+		leavesRepository.save(leave);
+		
+	}
+
+	@Override
+	public void rejectLeave(Long leaveId) {
+		// TODO Auto-generated method stub
+		Leaves leave=leavesRepository.findById(leaveId).orElseThrow(()-> new LeaveNotFoundException("Leave not found"));
+		leave.setStatus("REJECTED");
+		Employee emp=leave.getEmployee();
+		emp.setLeaveBalance(emp.getLeaveBalance()+leave.getDays());
+		leavesRepository.save(leave);
+		employeeRepo.save(emp);
+		
+	}
+
 }
