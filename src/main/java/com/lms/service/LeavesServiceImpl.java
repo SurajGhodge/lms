@@ -20,8 +20,8 @@ public class LeavesServiceImpl implements LeavesService {
 	@Autowired
 	EmployeeRepo employeeRepo;
 	@Override
-    public Leaves applyLeave(Long employeeId, LeaveRequestDto request) {
-        Employee emp = employeeRepo.findById(employeeId).orElseThrow();
+    public Leaves applyLeave(Long id, LeaveRequestDto request) {
+        Employee emp = employeeRepo.findById(id).orElseThrow();
         int leaveDays = (int) ChronoUnit.DAYS.between(request.getFromDate(), request.getToDate()) + 1;
 
         Leaves leave = new Leaves();
@@ -31,9 +31,7 @@ public class LeavesServiceImpl implements LeavesService {
         leave.setDays(leaveDays);
         leave.setStatus("PENDING");
         leave.setReason(request.getReason());
-
         emp.setLeaveBalance(emp.getLeaveBalance() - leaveDays);
-
         employeeRepo.save(emp);
         return leavesRepository.save(leave);
     }
@@ -47,11 +45,13 @@ public class LeavesServiceImpl implements LeavesService {
 		existingLeave.setEmployee(updatedleave.getEmployee());
 		existingLeave.setHd(updatedleave.isHd());
 		existingLeave.setFd(updatedleave.isFd());
-		existingLeave.setLeaveId(updatedleave.getLeaveId());
+		//existingLeave.setLeaveId(updatedleave.getLeaveId());
 		existingLeave.setReason(updatedleave.getReason());
 		existingLeave.setToDate(updatedleave.getToDate());
 		existingLeave.setFromDate(updatedleave.getFromDate());
+		leavesRepository.save(existingLeave);
 		return existingLeave;
+		
 	}
 		
 		return null;

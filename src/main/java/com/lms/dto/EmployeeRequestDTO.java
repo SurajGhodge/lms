@@ -3,7 +3,7 @@ package com.lms.dto;
 import java.time.LocalDate;
 
 public class EmployeeRequestDTO {
-    private String employeeId;
+    private Long id;
     private String name;
     private String permanentAddress;
     private String currentAddress;
@@ -17,12 +17,6 @@ public class EmployeeRequestDTO {
     private String branch;
     private String bloodGroup;
     private String reportingAuthority;
-	public String getEmployeeId() {
-		return employeeId;
-	}
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
-	}
 	public String getName() {
 		return name;
 	}
@@ -101,5 +95,11 @@ public class EmployeeRequestDTO {
 	public void setReportingAuthority(String reportingAuthority) {
 		this.reportingAuthority = reportingAuthority;
 	}
-
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }

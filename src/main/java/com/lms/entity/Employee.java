@@ -24,10 +24,6 @@ public class Employee {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//    @Column(name = "employee_id", nullable = false, unique = true)
-    private String employeeId;
-
     private String name;
 
     @Column(name = "permanent_address")
@@ -83,14 +79,6 @@ public class Employee {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
 	}
 
 	public String getName() {
@@ -204,7 +192,9 @@ public class Employee {
 	public void setLeaveBalance(int leaveBalance) {
 		this.leaveBalance = leaveBalance;
 	}
-
-    // Getters and Setters (Lombok recommended)
+	 public boolean isPermanent() {
+	        return "Permanent".equalsIgnoreCase(this.employmentStatus);
+	    }
+   
     
 }

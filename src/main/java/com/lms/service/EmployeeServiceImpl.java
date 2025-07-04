@@ -27,7 +27,7 @@ EmployeeRepo employeeRepo;
 	            Employee existingEmployee = existingEmployeeOpt.get();
 	            // update fields
 	            existingEmployee.setName(updatedEmployee.getName());
-	            existingEmployee.setEmployeeId(updatedEmployee.getEmployeeId());
+	           // existingEmployee.setEmployeeId(updatedEmployee.getEmployeeId());
 	            existingEmployee.setPermanentAddress(updatedEmployee.getPermanentAddress());
 	            existingEmployee.setCurrentAddress(updatedEmployee.getCurrentAddress());
 	            existingEmployee.setMobileNumber(updatedEmployee.getMobileNumber());

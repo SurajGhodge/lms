@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class LeaveRequestDto {
 	private long leaveId;
-	private long employeeId;
+	private long id;
 	private boolean fd;
 	private boolean hd;
 	private LocalDate fromDate;
@@ -17,11 +17,11 @@ public class LeaveRequestDto {
 	public void setLeaveId(long leaveId) {
 		this.leaveId = leaveId;
 	}
-	public long getEmployeeId() {
-		return employeeId;
+	public long getId() {
+		return id;
 	}
-	public void setEmployeeId(long employeeId) {
-		this.employeeId = employeeId;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public boolean isFd() {
 		return fd;

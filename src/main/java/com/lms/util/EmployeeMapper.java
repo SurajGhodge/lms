@@ -7,7 +7,8 @@ public class EmployeeMapper {
 
     public static Employee toEntity(EmployeeRequestDTO dto) {
         Employee emp = new Employee();
-        emp.setEmployeeId(dto.getEmployeeId());
+        //emp.setEmployeeId(dto.getEmployeeId());
+        emp.setId(dto.getId());
         emp.setName(dto.getName());
         emp.setPermanentAddress(dto.getPermanentAddress());
         emp.setCurrentAddress(dto.getCurrentAddress());
@@ -26,11 +27,21 @@ public class EmployeeMapper {
 
     public static EmployeeResponseDTO toResponseDTO(Employee employee) {
         EmployeeResponseDTO dto = new EmployeeResponseDTO();
-        dto.setEmployeeId(employee.getEmployeeId());
+       // dto.setEmployeeId(employee.getEmployeeId());
+        dto.setId(employee.getId());
         dto.setName(employee.getName());
         dto.setMobileNumber(employee.getMobileNumber());
         dto.setBranch(employee.getBranch());
         dto.setDateOfJoining(employee.getDateOfJoining());
+        dto.setBloodGroup(employee.getBloodGroup());
+        dto.setCurrentAddress(employee.getCurrentAddress());
+        dto.setDateOfBirth(employee.getDateOfBirth());
+        dto.setEmergencyContact(employee.getEmergencyContact());
+        dto.setEmployeeStatus(employee.getEmployeeStatus());
+        dto.setEmploymentStatus(employee.getEmploymentStatus());
+        dto.setEmploymentType(employee.getEmploymentType());
+       dto.setPermanentAddress(employee.getPermanentAddress());
+       dto.setReportingAuthority(employee.getReportingAuthority());
         return dto;
     }
 }

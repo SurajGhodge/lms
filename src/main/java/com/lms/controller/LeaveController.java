@@ -28,11 +28,11 @@ public class LeaveController {
 	  @Autowired
 	  private EmployeeRepo employeeRepo;
 
-	  @PostMapping("/apply/{employeeId}")
-	  public ResponseEntity<LeaveResponceDto> applyLeave(@PathVariable Long employeeId,
+	  @PostMapping("/apply/{id}")
+	  public ResponseEntity<LeaveResponceDto> applyLeave(@PathVariable Long id,
 	                                                     @RequestBody LeaveRequestDto request) {
-	      Employee emp = employeeRepo.findById(employeeId)
-	          .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeId));
+	      Employee emp = employeeRepo.findById(id)
+	          .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + id));
 
 	      Leaves leave = leavesServiceImpl.applyLeave(emp.getId(), request);
 	      return ResponseEntity.ok(LeaveMapper.toResponceDto(leave));
@@ -62,7 +62,7 @@ public class LeaveController {
 	    }
 
 	    // Get all leaves
-	    @GetMapping("/allleaves")
+	    @GetMapping("/all")
 	    public ResponseEntity<List<Leaves>> getAllLeaves() {
 	        List<Leaves> leaves = leavesServiceImpl.getAllLeaves();
 	        return ResponseEntity.ok(leaves);
