@@ -22,7 +22,7 @@ public class LeaveMapper {
 
     public static LeaveResponceDto toResponceDto(Leaves leave) {
         LeaveResponceDto leaveResponseDto = new LeaveResponceDto();
-        leaveResponseDto.setEmployeeId(leave.getEmployee().getId()); // or getEmployee().getEmployeeId() if you prefer business ID
+       leaveResponseDto.setId(leave.getEmployee().getId()); // or getEmployee().getEmployeeId() if you prefer business ID
         leaveResponseDto.setFd(leave.isFd());
         leaveResponseDto.setFromDate(leave.getFromDate());
         leaveResponseDto.setHd(leave.isHd());

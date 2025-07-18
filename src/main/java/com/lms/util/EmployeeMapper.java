@@ -22,6 +22,7 @@ public class EmployeeMapper {
         emp.setBranch(dto.getBranch());
         emp.setBloodGroup(dto.getBloodGroup());
         emp.setReportingAuthority(dto.getReportingAuthority());
+        emp.setLeaveBalance(dto.getLeaveBalance());
         return emp;
     }
 
@@ -42,6 +43,7 @@ public class EmployeeMapper {
         dto.setEmploymentType(employee.getEmploymentType());
        dto.setPermanentAddress(employee.getPermanentAddress());
        dto.setReportingAuthority(employee.getReportingAuthority());
+       dto.setLeaveBalance(employee.getLeaveBalance());
         return dto;
     }
 }

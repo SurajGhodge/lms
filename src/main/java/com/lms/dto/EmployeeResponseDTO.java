@@ -17,6 +17,7 @@ public class EmployeeResponseDTO {
 	    private String branch;
 	    private String bloodGroup;
 	    private String reportingAuthority;
+	    private int leaveBalance;
 		public String getName() {
 			return name;
 		}
@@ -101,5 +102,12 @@ public class EmployeeResponseDTO {
 		public void setId(Long id) {
 			this.id = id;
 		}
+		public int getLeaveBalance() {
+			return leaveBalance;
+		}
+		public void setLeaveBalance(int leaveBalance) {
+			this.leaveBalance = leaveBalance;
+		}
+		
 	    
 }

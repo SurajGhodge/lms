@@ -26,7 +26,7 @@ public class CompanyBranchServiceImpl implements CompanyBranchService {
 		{
 			CompanyBranch existingCompanyBranch=companyBranchRepository.findById(branchId).get();
 			existingCompanyBranch.setAddress(companyBranch.getAddress());
-			existingCompanyBranch.setBaranchId(companyBranch.getBaranchId());
+			//existingCompanyBranch.setBaranchId(companyBranch.getBaranchId());
 			existingCompanyBranch.setContactNumber(companyBranch.getContactNumber());
 			existingCompanyBranch.setEmail(companyBranch.getEmail());
 			return companyBranchRepository.save(existingCompanyBranch);

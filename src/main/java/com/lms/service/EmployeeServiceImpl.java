@@ -40,7 +40,7 @@ EmployeeRepo employeeRepo;
 	            existingEmployee.setBranch(updatedEmployee.getBranch());
 	            existingEmployee.setBloodGroup(updatedEmployee.getBloodGroup());
 	            existingEmployee.setReportingAuthority(updatedEmployee.getReportingAuthority());
-
+	            existingEmployee.setLeaveBalance(updatedEmployee.getLeaveBalance());
 	            return employeeRepo.save(existingEmployee);
 	        } else {
 	            throw new EmployeeNotFoundException("Employee not found with ID: " + id);

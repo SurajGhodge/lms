@@ -20,7 +20,6 @@ public class Employee {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
