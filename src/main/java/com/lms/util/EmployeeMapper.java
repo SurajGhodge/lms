@@ -23,6 +23,9 @@ public class EmployeeMapper {
         emp.setBloodGroup(dto.getBloodGroup());
         emp.setReportingAuthority(dto.getReportingAuthority());
         emp.setLeaveBalance(dto.getLeaveBalance());
+        emp.setEmail(dto.getEmail());
+        emp.setPassword(dto.getPassword());
+        emp.setRole(dto.getRole());
         return emp;
     }
 
@@ -44,6 +47,9 @@ public class EmployeeMapper {
        dto.setPermanentAddress(employee.getPermanentAddress());
        dto.setReportingAuthority(employee.getReportingAuthority());
        dto.setLeaveBalance(employee.getLeaveBalance());
+       dto.setEmail(employee.getEmail());
+       dto.setPassword(employee.getPassword());
+       dto.setRole(employee.getRole());
         return dto;
     }
 }

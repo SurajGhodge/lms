@@ -114,4 +114,11 @@ public class LeavesServiceImpl implements LeavesService {
 		
 	}
 
+	@Override
+	public Long getEmployeeIdByEmail(String email) {
+		// TODO Auto-generated method stub
+		Employee employee=employeeRepo.findByEmail(email);
+		return employee.getId();
+	}
+
 }

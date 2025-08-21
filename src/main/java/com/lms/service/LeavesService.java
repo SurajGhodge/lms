@@ -15,5 +15,7 @@ void cancelLeave(Long leaveId);
 void approveLeave(Long leaveId);
 void rejectLeave(Long leaveId);
 
+Long getEmployeeIdByEmail(String email);
+
 
 }

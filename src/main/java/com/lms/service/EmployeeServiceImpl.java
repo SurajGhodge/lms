@@ -4,19 +4,28 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.lms.entity.Employee;
 import com.lms.exception.EmployeeNotFoundException;
 import com.lms.repository.EmployeeRepo;
+
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpSession;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 EmployeeRepo employeeRepo;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Override
 	public Employee saveEmployee(Employee employee) {
 		// TODO Auto-generated method stub
-		
+		employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
+		employee.setRole("ROLE_USER");
 		return employeeRepo.save(employee);
 	}
 
@@ -66,6 +75,13 @@ EmployeeRepo employeeRepo;
 	@Override
 	public List<Employee> getAllEmployees() {
 		 return employeeRepo.findAll();
+	}
+
+	@Override
+	public void removeSessionMessage() {
+		// TODO Auto-generated method stub
+	HttpSession session=	((ServletRequestAttributes)(RequestContextHolder.getRequestAttributes())).getRequest().getSession();
+		session.removeAttribute("msg");
 	}
 
 }

@@ -10,4 +10,6 @@ public interface EmployeeService {
     void deleteEmployee(Long id);
     Employee getEmployeeById(Long id);
     List<Employee> getAllEmployees();
+    public void removeSessionMessage();
+    
 }

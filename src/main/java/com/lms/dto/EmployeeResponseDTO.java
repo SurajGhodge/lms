@@ -18,6 +18,9 @@ public class EmployeeResponseDTO {
 	    private String bloodGroup;
 	    private String reportingAuthority;
 	    private int leaveBalance;
+	    private String email;
+	    private String password;
+	    private String role;
 		public String getName() {
 			return name;
 		}
@@ -107,6 +110,24 @@ public class EmployeeResponseDTO {
 		}
 		public void setLeaveBalance(int leaveBalance) {
 			this.leaveBalance = leaveBalance;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getPassword() {
+			return password;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
+		public String getRole() {
+			return role;
+		}
+		public void setRole(String role) {
+			this.role = role;
 		}
 		
 	    

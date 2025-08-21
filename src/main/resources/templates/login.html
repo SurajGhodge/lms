@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- Bootstrap Header -->
+    <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Login')}"></div>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0px 6px 16px rgba(0,0,0,0.25);
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .login-card h1 {
+            text-align: center;
+            font-weight: 700;
+            color: #dd2476;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+        .form-label {
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: #dd2476;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #b91d61;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(15px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div th:replace="~{fragments/header :: siteHeader}"></div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="login-card">
+        <th:block th:if="${param.error}" ><span class="text-center text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</span></th:block>
+            <h1>Login</h1>
+            <form th:action="@{/login}" method="post">
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="username"
+                           name="username" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" 
+                           name="password" placeholder="Enter your password" required>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill">Login</button>
+				<i>if you don't have account <a th:href="@{/register}"> register here</a> </i>
+                <!-- Error Message -->
+                <div th:if="${param.error}" class="alert alert-danger mt-3 text-center">
+                    Invalid email or password.
+                </div>
+
+                <!-- Logout Message -->
+                <div th:if="${param.logout}" class="alert alert-success mt-3 text-center">
+                    You have been logged out successfully.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: siteFooter}"></div>
+
+    <!-- Bootstrap Scripts -->
+    <div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
+</body>
+</html>

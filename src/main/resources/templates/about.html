@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="~{fragments/bootstrap :: bootstrapHeader('Home Page')}"></div>
+ <div th:replace="~{fragments/header :: siteHeader}"></div>
+<h1>welcome to about</h1>
+  <!-- Footer -->
+    <div th:replace="~{fragments/footer :: siteFooter}"></div>
+
+    <!-- Import Bootstrap Scripts -->
+    <div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
+</body>
+</html>
