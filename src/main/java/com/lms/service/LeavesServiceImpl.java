@@ -20,22 +20,43 @@ public class LeavesServiceImpl implements LeavesService {
 	@Autowired
 	EmployeeRepo employeeRepo;
 	@Override
-    public Leaves applyLeave(Long id, LeaveRequestDto request) {
-        Employee emp = employeeRepo.findById(id).orElseThrow();
-        int leaveDays = (int) ChronoUnit.DAYS.between(request.getFromDate(), request.getToDate()) + 1;
+	public Leaves applyLeave(Long id, LeaveRequestDto request) {
+		Employee emp = employeeRepo.findById(id)
+		        .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
 
-        Leaves leave = new Leaves();
-        leave.setEmployee(emp);
-        leave.setFromDate(request.getFromDate());
-        leave.setToDate(request.getToDate());
-        leave.setDays(leaveDays);
-        leave.setStatus("PENDING");
-        leave.setReason(request.getReason());
-        emp.setLeaveBalance(emp.getLeaveBalance() - leaveDays);
-        employeeRepo.save(emp);
-        return leavesRepository.save(leave);
-    }
+	    Leaves leave = new Leaves();
+	    leave.setEmployee(emp);
+	    leave.setFromDate(request.getFromDate());
+	    leave.setReason(request.getReason());
+	    leave.setStatus("PENDING");
 
+	    double leaveDays = 0.0;
+
+	    if (request.isHd()) {
+	        // Half-day leave
+	        leave.setHd(true);
+	        leave.setFd(false);
+	        leave.setToDate(request.getFromDate()); // same day
+	        leaveDays = 0.5; // ✅ deduct only half day
+	    } else if (request.isFd()) {
+	        // Full-day leave
+	        leave.setFd(true);
+	        leave.setHd(false);
+	        leave.setToDate(request.getToDate());
+
+	        long days = ChronoUnit.DAYS.between(request.getFromDate(), request.getToDate()) + 1;
+	        leaveDays = (double) days; // ✅ full-day count
+	    }
+
+	    leave.setDays(leaveDays);
+
+	    // Deduct balance
+	    double newBalance = emp.getLeaveBalance() - leaveDays;
+	    emp.setLeaveBalance(newBalance);
+	    employeeRepo.save(emp);
+
+	    return leavesRepository.save(leave);
+	}
 	@Override
 	public Leaves updateLeave(Leaves updatedleave,Long leaveId) {
 	Optional<Leaves> existingLeaveOpt=leavesRepository.findById(leaveId);

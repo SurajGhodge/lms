@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Leave History</title>
+	<style type="text/css">
+   	body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        
+   	</style>
+
 </head>
 <body>
-<h1>Leave History</h1>
+ <!-- Header -->
+    <div th:replace="~{fragments/header :: siteHeader}"></div>
+<div
+	th:replace="~{fragments/bootstrap :: bootstrapHeader('Leave History')}"></div>
+	
+	<div class="container mt-5">
+	
+		<h2 class="text-center mb-4 text-white">Leave History</h2>
+
+		<table class="table table-bordered table-hover shadow">
+			<thead class="table-dark">
+				<tr>
+					<th>ID</th>
+					<th>Leave Type</th>
+					<th>From Date</th>
+					<th>To Date</th>
+					<th>Reason</th>
+					<th>Days</th>
+					<th>Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="leave : ${leaves}">
+					<td th:text="${leave.leaveId}"></td>
+
+					<!-- Display Leave Type based on fd/hd -->
+					<td><span
+						th:text="${leave.fd} ? 'Full Day' : (${leave.hd} ? 'Half Day' : 'N/A')"></span>
+					</td>
+
+					<td th:text="${leave.fromDate}"></td>
+					<td th:text="${leave.toDate}"></td>
+					<td th:text="${leave.reason}"></td>
+					<td th:text="${leave.days}"></td>
+
+					<td><span th:switch="${leave.status}"> <span
+							th:case="'APPROVED'" class="badge bg-success"
+							th:text="${leave.status}"></span> <span th:case="'REJECTED'"
+							class="badge bg-danger" th:text="${leave.status}"></span> <span
+							th:case="*" class="badge bg-warning text-dark"
+							th:text="${leave.status}"></span>
+					</span></td>
+
+					<td><a th:href="@{'/leaves/update/' + ${leave.leaveId}}"
+						class="btn btn-sm btn-primary">Update</a> <a
+						th:href="@{'/leaves/status/' + ${leave.leaveId} + '/CANCELLED'}"
+						class="btn btn-sm btn-secondary">Cancel</a>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
 </body>
 </html>

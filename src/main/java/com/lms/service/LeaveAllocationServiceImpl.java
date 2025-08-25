@@ -57,7 +57,7 @@ public class LeaveAllocationServiceImpl implements LeaveAllocationService {
         allocation.setAllocationMonth(YearMonth.from(allocationDate));
         leaveAllocationRepository.save(allocation);
         
-        int updatedBalance = employee.getLeaveBalance() + leaveCount;
+        double updatedBalance = employee.getLeaveBalance() + leaveCount;
         employee.setLeaveBalance(updatedBalance);
         employeeRepository.save(employee);
     }

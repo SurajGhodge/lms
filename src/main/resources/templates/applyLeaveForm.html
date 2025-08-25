@@ -3,33 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Apply Leave</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   	<style type="text/css">
+   	body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        
+   	</style>
 </head>
-<body class="bg-light">
-
+<body>
+  <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Home')}"></div>
+   <!-- Header -->
+    <div th:replace="~{fragments/header :: siteHeader}"></div>
 <div class="container py-5">
-    <h2 class="text-center mb-4">Apply for Leave</h2>
+    <h4 class="text-center mb-4 text-white" >Apply for Leave</h4>
 
-    <div th:if="${message}" class="alert alert-success text-center" role="alert">
+    <!-- Success / Error Message -->
+    <div th:if="${message}" class="alert alert-info text-center" role="alert">
         <span th:text="${message}"></span>
     </div>
 
-    <form th:action="@{/leave/apply}" th:object="${leaveRequest}" method="post" class="card p-4 shadow-lg border-0 rounded-3">
+    <!-- Apply Leave Form -->
+    <form th:action="@{/api/leaves/applyaction}" th:object="${leaveRequest}" method="post"
+          class="card p-4 shadow-lg border-0 rounded-3">
+
+        <!-- Employee ID (hidden or auto from session later) -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <!-- Full Day / Half Day Choice -->
+        <div class="mb-3">
+            <label class="form-label">Leave Type</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{fd}" th:value="true" id="fdRadio">
+                <label class="form-check-label" for="fdRadio">Full Day</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{hd}" th:value="true" id="hdRadio">
+                <label class="form-check-label" for="hdRadio">Half Day</label>
+            </div>
+        </div>
+
+        <!-- From Date -->
         <div class="mb-3">
             <label for="fromDate" class="form-label">From Date</label>
             <input type="date" th:field="*{fromDate}" class="form-control" required>
         </div>
 
+        <!-- To Date -->
         <div class="mb-3">
             <label for="toDate" class="form-label">To Date</label>
             <input type="date" th:field="*{toDate}" class="form-control" required>
         </div>
 
+        <!-- Reason -->
         <div class="mb-3">
             <label for="reason" class="form-label">Reason</label>
-            <textarea th:field="*{reason}" class="form-control" rows="3" required></textarea>
+            <textarea th:field="*{reason}" class="form-control" rows="3" placeholder="Enter reason..." required></textarea>
         </div>
 
+        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary w-100">Apply Leave</button>
     </form>
 </div>

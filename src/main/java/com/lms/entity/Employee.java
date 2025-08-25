@@ -68,7 +68,7 @@ public class Employee {
     @Column(name = "reporting_authority")
     private String reportingAuthority;
     
-    private int leaveBalance;
+    private double leaveBalance;
     @OneToMany(mappedBy = "employee")
     private List<Leaves> leaves = new ArrayList<>();
 
@@ -184,11 +184,11 @@ public class Employee {
 		this.reportingAuthority = reportingAuthority;
 	}
 
-	public int getLeaveBalance() {
+	public double getLeaveBalance() {
 		return leaveBalance;
 	}
 
-	public void setLeaveBalance(int leaveBalance) {
+	public void setLeaveBalance(double leaveBalance) {
 		this.leaveBalance = leaveBalance;
 	}
 	 public boolean isPermanent() {

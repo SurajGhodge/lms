@@ -14,7 +14,7 @@ public class EmployeeRequestDTO {
     private String employmentStatus;
     private String employeeStatus;
     private String employmentType;
-    private int leaveBalance;
+    private double leaveBalance;
     private String branch;
     private String bloodGroup;
     private String reportingAuthority;
@@ -105,10 +105,10 @@ public class EmployeeRequestDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getLeaveBalance() {
+	public double getLeaveBalance() {
 		return leaveBalance;
 	}
-	public void setLeaveBalance(int leaveBalance) {
+	public void setLeaveBalance(double leaveBalance) {
 		this.leaveBalance = leaveBalance;
 	}
 	public String getEmail() {

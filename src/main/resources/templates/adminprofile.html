@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Profile</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  
     <style>
         body {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -12,6 +12,7 @@
             flex-direction: column;
         }
         .profile-card {
+        
             max-width: 800px;
             margin: 40px auto;
             border-radius: 20px;
@@ -40,10 +41,10 @@
     <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Admin Profile')}"></div>
 
     <!-- Site Header -->
-    <div th:replace="~{fragments/header :: siteHeader}"></div>
-
+    <div th:replace="~{fragments/admin_header :: siteHeader}"></div>
+<br><br>
     <!-- Profile Card -->
-    <div class="card shadow-lg profile-card">
+    <div class="card shadow-lg profile-card mt-5">
         <!-- Profile Header -->
         <div class="profile-header">
             <img th:src="@{/images/admin-avatar.png}" alt="Admin Photo">
@@ -55,29 +56,24 @@
         <div class="card-body">
             <h4 class="mb-3">Profile Information</h4>
             <ul class="list-group list-group-flush mb-4">
-                <li class="list-group-item"><strong>Email:</strong> <span th:text="${admin.email}">admin@example.com</span></li>
-                <li class="list-group-item"><strong>Phone:</strong> <span th:text="${admin.phone}">+91 9876543210</span></li>
-                <li class="list-group-item"><strong>Address:</strong> <span th:text="${admin.address}">Pune, India</span></li>
+                <li class="list-group-item"><strong>Email:</strong> <span th:text="${admin.email}"></span></li>
+                <li class="list-group-item"><strong>Phone:</strong> <span th:text="${admin.mobileNumber}"></span></li>
+                <li class="list-group-item"><strong>Address:</strong> <span th:text="${admin.currentAddress}"></span></li>
             </ul>
 
             <!-- Stats -->
             <div class="row text-center mb-4">
-                <div class="col-md-4">
-                    <div class="card stats-card shadow-sm p-3">
-                        <h5>Employees</h5>
-                        <h3 class="text-primary" th:text="${stats.employees}">120</h3>
-                    </div>
-                </div>
+                
                 <div class="col-md-4">
                     <div class="card stats-card shadow-sm p-3">
                         <h5>Departments</h5>
-                        <h3 class="text-success" th:text="${stats.departments}">5</h3>
+                        <h3 class="text-success" th:text="${admin.branch}"></h3>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card stats-card shadow-sm p-3">
                         <h5>Pending Requests</h5>
-                        <h3 class="text-danger" th:text="${stats.pendingRequests}">8</h3>
+                        <h3 ><!-- class="text-danger" th:text="${stats.pendingRequests}"> -->8</h3>
                     </div>
                 </div>
             </div>

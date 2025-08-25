@@ -10,7 +10,8 @@ public class LeaveResponceDto {
 	private LocalDate fromDate;
 	private LocalDate toDate;
 	private String reason;
-	
+	private double days;
+	private String status;
 	public long getLeaveId() {
 		return leaveId;
 	}
@@ -52,6 +53,18 @@ public class LeaveResponceDto {
 	}
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+	public double getDays() {
+		return days;
+	}
+	public void setDays(double days) {
+		this.days = days;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

@@ -60,7 +60,7 @@
     <!-- Login Form -->
     <div class="login-container">
         <div class="login-card">
-        <th:block th:if="${param.error}" ><span class="text-center text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</span></th:block>
+       
             <h1>Login</h1>
             <form th:action="@{/login}" method="post">
                 <!-- Email -->

@@ -20,7 +20,7 @@ public class Leaves {
 	private LocalDate toDate;
 	private String reason;
 	private String status;//approved/rejected/cancelled/pending
-	private int days;
+	private double days;
 	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
@@ -68,10 +68,10 @@ public class Leaves {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getDays() {
+	public double getDays() {
 		return days;
 	}
-	public void setDays(int days) {
+	public void setDays(double days) {
 		this.days = days;
 	}
 	public Employee getEmployee() {

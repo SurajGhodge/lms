@@ -20,14 +20,14 @@ public class AdminController {
 	@GetMapping("/profile")
 public String profile()
 {
-	return "admin_profile";
+	return "adminprofile";
 }
 	@ModelAttribute
 	public void commonUser(Principal p, Model m) {
 		if (p != null) {
 			String email = p.getName();
 			Employee employee = employeeRepo.findByEmail(email);
-			m.addAttribute("employee", employee);
+			m.addAttribute("admin", employee);
 
 		}
 			 	
