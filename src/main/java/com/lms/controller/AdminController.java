@@ -32,4 +32,34 @@ public String profile()
 		}
 			 	
 		    }
+	@GetMapping("/manageemployee")
+	public String manageEmployee()
+	{
+		return "manage-employee";
+	}
+	@GetMapping("/manageholiday")
+	public String manageHoliday()
+	{
+		return "manage-holiday";
+	}
+	@GetMapping("/manageleaves")
+	public String manageLeaves()
+	{
+		return "manage-leaves-admin";
+	}
+	@GetMapping("/editadminpassword")
+	public String editAdminPassword()
+	{
+		return "change-admin-password";
+	}
+	@GetMapping("/editadminprofile")
+	public String editAdminProfile()
+	{
+		return "edit-admin-profile";
+	}
+	@GetMapping("/viewemployees")
+	public String viewEmployees()
+	{
+		return "employee-list";
+	}
 }

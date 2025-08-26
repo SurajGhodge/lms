@@ -50,6 +50,8 @@ EmployeeRepo employeeRepo;
 	            existingEmployee.setBloodGroup(updatedEmployee.getBloodGroup());
 	            existingEmployee.setReportingAuthority(updatedEmployee.getReportingAuthority());
 	            existingEmployee.setLeaveBalance(updatedEmployee.getLeaveBalance());
+	            existingEmployee.setRole(updatedEmployee.getRole());
+	            existingEmployee.setEmail(updatedEmployee.getEmail());
 	            return employeeRepo.save(existingEmployee);
 	        } else {
 	            throw new EmployeeNotFoundException("Employee not found with ID: " + id);
