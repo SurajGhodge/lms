@@ -1,15 +1,15 @@
 package com.lms.dto;
 
 public class CompanyBranchDto {
-	private int baranchId;
+	private int branchId;
 	private String address;
 	private String contactNumber;
 	private String email;
-	public int getBaranchId() {
-		return baranchId;
+	public int getBranchId() {
+		return branchId;
 	}
-	public void setBaranchId(int baranchId) {
-		this.baranchId = baranchId;
+	public void setBranchId(int branchId) {
+		this.branchId = branchId;
 	}
 	public String getAddress() {
 		return address;

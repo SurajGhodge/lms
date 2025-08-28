@@ -1,5 +1,6 @@
 package com.lms.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,15 +10,16 @@ import jakarta.persistence.Id;
 public class CompanyBranch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int baranchId;
+	 @Column(name = "branch_id")
+	private int branchId;
 	private String address;
 	private String contactNumber;
 	private String email;
-	public int getBaranchId() {
-		return baranchId;
+	public int getBranchId() {
+		return branchId;
 	}
-	public void setBaranchId(int baranchId) {
-		this.baranchId = baranchId;
+	public void setBranchId(int branchId) {
+		this.branchId = branchId;
 	}
 	public String getAddress() {
 		return address;

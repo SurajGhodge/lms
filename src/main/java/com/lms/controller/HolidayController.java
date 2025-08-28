@@ -2,6 +2,8 @@ package com.lms.controller;
 
 import com.lms.entity.Holiday;
 import com.lms.service.HolidayService;
+import com.lms.service.HolidayServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -57,5 +59,14 @@ public class HolidayController {
     public ResponseEntity<String> deleteHoliday(@PathVariable int id) {
         holidayService.deleteHoliday(id);
         return ResponseEntity.ok("Holiday deleted successfully");
+    }
+    
+    //api for admin
+    @GetMapping("/manage")
+    public String holidayList(Model model)
+    {
+    	List<Holiday> holidays=holidayService.getAllHolidays();
+    	model.addAttribute("holidays", holidays);
+    	return "admin-holiday-list";
     }
 }

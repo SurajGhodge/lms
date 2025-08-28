@@ -15,12 +15,65 @@
 <body class="container mt-3">
  <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Home')}"></div>
    <!-- Header -->
-    <div th:replace="~{fragments/header :: siteHeader}"></div>
+    <div th:replace="~{fragments/admin_header :: siteHeader}"></div>
     <div class="container p-5">
     <h4 class="mb-3 text-center text-white">Branch</h4>
+ <div class="container">
+  <h4 class="text-white mb-3" 
+      th:text="${branch.branchId} != null ? 'Update Branch' : 'Add Branch'">
+      Add Branch
+  </h4>
+
+  <div class="border border-light rounded p-4">
+    <form th:action="@{/branches/save}" th:object="${branch}" method="post">
+      
+      <!-- Hidden ID field (only used for update) -->
+      <input type="hidden" th:field="*{branchId}">
+
+      <div class="row g-3 align-items-end">
+        
+        <!-- Address -->
+        <div class="col-md-3 col-12">
+          <label class="form-label text-white">Address</label>
+          <input type="text" th:field="*{address}" required class="form-control">
+        </div>
+
+        <!-- Contact No -->
+        <div class="col-md-3 col-12">
+          <label class="form-label text-white">Contact No</label>
+          <input type="text" th:field="*{contactNumber}" required class="form-control">
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-3 col-12">
+          <label class="form-label text-white">Email</label>
+          <input type="email" th:field="*{email}" required class="form-control">
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-md-3 col-12">
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary"
+                    th:text="${branch.branchId} != null ? 'Add' : 'Update'">
+              Submit
+            </button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+    <br>
+    <br>
+    <div class="border border-light rounded p-4">
 	<div class="text-center mb-5">
-		<form class="d-flex" th:action="@{/employee/search}" method="get">
-    <input class="form-control me-3" type="search" name="keyword" placeholder="Search Employee" aria-label="Search">
+		<form class="d-flex" th:action="@{/branches/search}" method="get">
+    <input class="form-control me-3 p4" type="search" name="keyword" placeholder="Search Employee" aria-label="Search">
     <button class="btn btn-success" type="submit">Search</button>
 </form>
 	</div>
@@ -38,24 +91,24 @@
             </tr>
         </thead>
         <tbody>
-       			<tr th:each="branch : ${branch}">
-    <td th:text="${branch.branchId}"></td>
-    <td th:text="${branch.address}"></td>
-    <td th:text="${branch.contactNumber}"></td>
-    <td th:text="${branch.email}"></td>
-    <td>
-    <div class="d-flex justify-content-center gap-3 my-3">
-    <a th:href="@{'/employee/' + ${employee.id}}" class="btn btn-outline-primary">View</a>
-        <a th:href="@{'/employee/update/' + ${employee.id}}" class="btn btn-outline-success">Update</a>
-        <a th:href="@{'/employee/delete/' + ${employee.id}}" class="btn btn-outline-danger">Delete</a>
-    </div>
-    </td>
-</tr>
+    <tr th:each="branch : ${branches}">
+        <td th:text="${branch.branchId}"></td>
+        <td th:text="${branch.address}"></td>
+        <td th:text="${branch.contactNumber}"></td>
+        <td th:text="${branch.email}"></td>
+        <td>
+            <div class="d-flex justify-content-center gap-3 my-3">
+                <a th:href="@{'/branches/' + ${branch.branchId}}" class="btn btn-outline-primary">View</a>
+                <a th:href="@{'/branches/edit/' + ${branch.branchId}}" class="btn btn-outline-success">Update</a>
+                <a th:href="@{'/branches/delete/' + ${branch.branchId}}" class="btn btn-outline-danger">Delete</a>
+            </div>
+        </td>
+    </tr>
+</tbody>
 
-        </tbody>
     </table>
 	</div>
-   
+   </div>
 </div>
 </body>
 </html>

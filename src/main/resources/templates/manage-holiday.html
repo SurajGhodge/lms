@@ -40,5 +40,33 @@
     <!-- Site Header -->
     <div th:replace="~{fragments/admin_header :: siteHeader}"></div>
 <h1> welcome manage holiday</h1>
+<div class="container my-5">
+    <h2 class="text-center mb-4 fw-bold text-white">Manage Holidays</h2>
+    <div class="row g-4 justify-content-center">
+        
+        <!-- Add Employee -->
+        <div class="col-md-4">
+            <div class="card h-100 text-white bg-primary">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h4 class="card-title">Add New Holiday</h4>
+                    <p class="card-text">Add new holiday easily.</p>
+                    <a th:href="@{/holidays/manage}" class="btn btn-light btn-custom mt-auto">Add</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Branch -->
+        <div class="col-md-4">
+            <div class="card h-100 text-white bg-success">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h4 class="card-title">Modify Holiday</h4>
+                    <p class="card-text">Add or modify Holiday in system</p>
+                    <a th:href="@{/branches/all}" class="btn btn-light btn-custom mt-auto">Manage Holiday</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

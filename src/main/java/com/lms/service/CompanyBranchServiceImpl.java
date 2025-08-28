@@ -46,4 +46,14 @@ public class CompanyBranchServiceImpl implements CompanyBranchService {
 		return companyBranchRepository.findAll();
 	}
 
+	public void deleteCompanyBranch(int id) {
+		// TODO Auto-generated method stub
+		companyBranchRepository.deleteById(id);
+	}
+
+	 @Override
+	    public Optional<CompanyBranch> findByAddressContainingIgnoreCase(String address) {
+	        return companyBranchRepository.findByAddressContainingIgnoreCase(address);
+	    }
+
 }

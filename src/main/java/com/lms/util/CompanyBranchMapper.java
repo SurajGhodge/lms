@@ -8,7 +8,7 @@ public class CompanyBranchMapper {
 	{
 		CompanyBranch companyBranch=new CompanyBranch();
 		companyBranch.setAddress(companyBranchDto.getAddress());
-		companyBranch.setBaranchId(companyBranchDto.getBaranchId());
+		companyBranch.setBranchId(companyBranchDto.getBranchId());
 		companyBranch.setContactNumber(companyBranchDto.getContactNumber());
 		companyBranch.setEmail(companyBranchDto.getEmail());
 		return companyBranch;
@@ -20,7 +20,7 @@ public class CompanyBranchMapper {
 	        }
 
 	        CompanyBranchDto dto = new CompanyBranchDto();
-	        dto.setBaranchId(companyBranch.getBaranchId());
+	        dto.setBranchId(companyBranch.getBranchId());
 	        dto.setAddress(companyBranch.getAddress());
 	        dto.setContactNumber(companyBranch.getContactNumber());
 	        dto.setEmail(companyBranch.getEmail());

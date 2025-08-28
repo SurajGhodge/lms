@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Holiday List</title>
+    <style>
+     body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+        }
+    </style>
+   
+</head>
+<body class="container mt-3">
+ <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Home')}"></div>
+   <!-- Header -->
+    <div th:replace="~{fragments/header :: siteHeader}"></div>
+    <div class="container p-5">
+    <h4 class="mb-3 text-center text-primary">Holiday List</h4>
+
+    <table class="table table-striped table-bordered table-hover shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Holiday Name</th>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="holiday : ${holidays}">
+                <td th:text="${holiday.holidayId}"></td>
+                <td th:text="${holiday.holidayName}"></td>
+                <td th:text="${#temporals.format(holiday.date, 'dd-MM-yyyy')}"></td>
+                <td th:text="${holiday.day}"></td>
+
+                <!-- Compare holiday date with today -->
+                <td>
+                    <span th:if="${holiday.date.isAfter(T(java.time.LocalDate).now())}" 
+                          class="badge bg-success">Upcoming</span>
+                    <span th:if="${holiday.date.isBefore(T(java.time.LocalDate).now())}" 
+                          class="badge bg-secondary">Past</span>
+                    <span th:if="${holiday.date.isEqual(T(java.time.LocalDate).now())}" 
+                          class="badge bg-warning text-dark">Today</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
