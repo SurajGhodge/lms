@@ -73,16 +73,5 @@ public class LeaveController {
 	    	leavesServiceImpl.cancelLeave(leaveId);
 	    	return ResponseEntity.ok("Leave cancelled sucessfully");
 	    }
-	    @PutMapping("/approve/{leaveId}")
-	    public ResponseEntity<String> approveLeave(@PathVariable Long leaveId)
-	    {
-	    	leavesServiceImpl.approveLeave(leaveId);
-	    	return ResponseEntity.ok("leave approved successfully");
-	    }
-	    @PutMapping("/reject/{leaveId}")
-	    public ResponseEntity<String> rejectLeave(@PathVariable Long leaveId)
-	    {
-	    	leavesServiceImpl.rejectLeave(leaveId);
-	    	return ResponseEntity.ok("Leave rejected and leave balance restored ");
-	    }
+	    
 	}

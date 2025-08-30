@@ -17,49 +17,25 @@ import java.util.List;
 public class HolidayController {
 
     @Autowired
-    private HolidayService holidayService;
+    private HolidayServiceImpl holidayService;
 
     // --- Thymeleaf Page ---
     @GetMapping("/list")
     public String showHolidayList(Model model) {
-        List<Holiday> holidays = holidayService.getAllHolidays();
+      List<Holiday> holidays = holidayService.getAllHolidays();
         model.addAttribute("holidays", holidays);
         return "holidayList";
     }
 
     // --- APIs ---
     @PostMapping("/add")
-    @ResponseBody
-    public ResponseEntity<Holiday> addHoliday(@RequestBody Holiday holiday) {
-        return ResponseEntity.ok(holidayService.addHoliday(holiday));
-    }
+   public String saveHoliday(@ModelAttribute("holiday") Holiday holiday)
+   {
+    	holidayService.addHoliday(holiday);
+    	return "redirect:/holidays/manage";
+   }
 
-    @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<Holiday> updateHoliday(@PathVariable int id, @RequestBody Holiday holiday) {
-        Holiday updated = holidayService.updateHoliday(id, holiday);
-        if (updated == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(updated);
-    }
-
-    @GetMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<Holiday> getHoliday(@PathVariable int id) {
-        return ResponseEntity.ok(holidayService.getHolidayById(id));
-    }
-
-    @GetMapping("/all")
-    @ResponseBody
-    public ResponseEntity<List<Holiday>> getAllHolidays() {
-        return ResponseEntity.ok(holidayService.getAllHolidays());
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> deleteHoliday(@PathVariable int id) {
-        holidayService.deleteHoliday(id);
-        return ResponseEntity.ok("Holiday deleted successfully");
-    }
+ 
     
     //api for admin
     @GetMapping("/manage")
@@ -67,6 +43,22 @@ public class HolidayController {
     {
     	List<Holiday> holidays=holidayService.getAllHolidays();
     	model.addAttribute("holidays", holidays);
+    	model.addAttribute("holiday",new Holiday());
     	return "admin-holiday-list";
+    }
+  
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable("id") int id, Model model) {
+        Holiday holiday = holidayService.getHolidayById(id);
+        model.addAttribute("holiday", holiday);
+        model.addAttribute("holidays", holidayService.getAllHolidays()); // also reload list
+        return "admin-holiday-list"; // ✅ use your existing file
+    }
+
+    // ✅ Handle delete
+    @GetMapping("/delete/{id}")
+    public String deleteHoliday(@PathVariable("id") int id) {
+        holidayService.deleteHoliday(id);
+        return "redirect:/holidays/manage";
     }
 }

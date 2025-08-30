@@ -39,6 +39,47 @@
 
     <!-- Site Header -->
     <div th:replace="~{fragments/admin_header :: siteHeader}"></div>
-<h1> welcome manage leave</h1>
+<br>
+<br>
+<br>
+ <div class="container my-5">
+    <h2 class="text-center mb-4 fw-bold text-white">Manage Leaves</h2>
+    <div class="row g-4 justify-content-center text-center">
+        
+        <!-- Add Employee -->
+        <div class="col-md-4">
+            <div class="card h-100 text-white bg-primary">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h4 class="card-title">Leave Type</h4>
+                    <p class="card-text">Add new Leave Type or  modify existing Leave Type easily. You can also delete specific leave type</p>
+                    <a th:href="@{/leave-types}" class="btn btn-light btn-custom mt-auto">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Leave Record -->
+        <div class="col-md-4">
+            <div class="card h-100 text-white bg-success">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h4 class="card-title">Leave Records</h4>
+                    <p class="card-text">View All employee leave record. Admin can approve or reject leave request</p>
+                    <a th:href="@{/api/leaves/leave-record}" class="btn btn-light btn-custom mt-auto">Leave Record </a>
+                </div>
+            </div>
+        </div>
+        
+         <!-- credit leave -->
+        <div class="col-md-4">
+            <div class="card h-100 text-white bg-warning">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h4 class="card-title">Credit leave</h4>
+                    <p class="card-text">Credit leaves to the employee</p>
+                    <a th:href="@{/api/leaves/leave-record}" class="btn btn-light btn-custom mt-auto">Credit Leaves </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

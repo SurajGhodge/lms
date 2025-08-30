@@ -1,17 +1,169 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>About Us - LMS</title>
+    <div th:replace="~{fragments/bootstrap :: bootstrapHeader('About Us')}"></div>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fafc;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0px 6px 20px rgba(0,0,0,0.15);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+        .hero p {
+            margin-top: 12px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 60px 20px;
+        }
+        .about-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .about-section p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            color: #444;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: 0.4s ease;
+            height: 100%;
+        }
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .info-card i {
+            font-size: 3rem;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+        .info-card h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #f0f4ff;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 60px;
+            border-radius: 20px;
+        }
+        .stat-box {
+            padding: 25px;
+        }
+        .stat-box h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2575fc;
+        }
+        .stat-box p {
+            margin-top: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-<div th:replace="~{fragments/bootstrap :: bootstrapHeader('Home Page')}"></div>
- <div th:replace="~{fragments/header :: siteHeader}"></div>
-<h1>welcome to about</h1>
-  <!-- Footer -->
+    <!-- Header -->
+    <div th:replace="~{fragments/header :: siteHeader}"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>About Our Leave Management System</h1>
+        <p>Smart, Simple & Transparent Leave Tracking for Modern Workplaces</p>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2>Who We Are</h2>
+            <p>
+                Our Leave Management System (LMS) is designed to simplify employee leave processes. 
+                From applying to approving leaves, everything is streamlined in one place. 
+                It eliminates paperwork, saves HR time, and ensures a smooth experience for employees and managers.
+            </p>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <i class="bi bi-bullseye"></i>
+                        <h5>Our Mission</h5>
+                        <p>To provide an efficient and user-friendly solution for managing employee leaves digitally.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <i class="bi bi-eye-fill"></i>
+                        <h5>Our Vision</h5>
+                        <p>To empower organizations with smarter leave management that builds transparency & trust.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <i class="bi bi-lightning-fill"></i>
+                        <h5>Why Choose Us</h5>
+                        <p>We combine technology and simplicity to reduce complexity in employee leave tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 stat-box">
+                    <h3>500+</h3>
+                    <p>Leaves Processed</p>
+                </div>
+                <div class="col-md-4 stat-box">
+                    <h3>50+</h3>
+                    <p>Companies Using LMS</p>
+                </div>
+                <div class="col-md-4 stat-box">
+                    <h3>95%</h3>
+                    <p>User Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <div th:replace="~{fragments/footer :: siteFooter}"></div>
 
-    <!-- Import Bootstrap Scripts -->
+    <!-- Bootstrap Scripts -->
     <div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
 </body>
 </html>

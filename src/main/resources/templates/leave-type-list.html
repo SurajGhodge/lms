@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leave Types</title>
+    <style type="text/css">
+ body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+</style>
+</head>
+<body>
+ <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Home')}"></div>
+ <div th:replace="~{fragments/admin_header :: siteHeader}"></div>
+ <div class="container p-5">
+<h1 class="mb-3 text-center text-white">Leave Types</h1>
+
+<a th:href="@{/leave-types/new}" class="btn btn-primary mb-2">Add New Leave Type</a>
+<div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+<table class="table table-striped table-bordered table-hover shadow" border="1">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Leave Type</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- ✅ Correct iteration -->
+    <tr th:each="leaveType : ${leaveTypes}">
+        <td th:text="${leaveType.leaveTypeId}"></td>
+        <td th:text="${leaveType.leaveTypeName}"></td>
+        <td>
+            <a th:href="@{'/leave-types/edit/' + ${leaveType.leaveTypeId}}" class="btn btn-primary">Edit</a>
+            <a th:href="@{'/leave-types/delete/' + ${leaveType.leaveTypeId}}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

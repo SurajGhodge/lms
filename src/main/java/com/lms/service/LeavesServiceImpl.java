@@ -70,6 +70,7 @@ public class LeavesServiceImpl implements LeavesService {
 		existingLeave.setReason(updatedleave.getReason());
 		existingLeave.setToDate(updatedleave.getToDate());
 		existingLeave.setFromDate(updatedleave.getFromDate());
+		existingLeave.setStatus(updatedleave.getStatus());
 		leavesRepository.save(existingLeave);
 		return existingLeave;
 		

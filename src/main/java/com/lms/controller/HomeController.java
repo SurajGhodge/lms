@@ -31,7 +31,10 @@ public class HomeController {
     public String about() {
         return "about";   // loads about.html
     }
-
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";   // loads index.html
+    }
 //    @GetMapping("/profile")
 //    public String profile(Principal p, Model m) {
 //        String email = p.getName();
