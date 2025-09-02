@@ -28,6 +28,42 @@ Build Tool: Maven
 
 Other Tools: Lombok, Postman, Git
 
+📂 Project Structure
+
+leave-management-system/
+
+ ├── src/
+ 
+ │   ├── main/
+ 
+ │   │   ├── java/com/lms/                # Main source code
+ 
+ │   │   │   ├── controller/              # Controllers
+ 
+ │   │   │   ├── dto/                     # DTOs
+ 
+ │   │   │   ├── entity/                  # Entities
+ 
+ │   │   │   ├── exception/               # Custom Exceptions
+ 
+ │   │   │   ├── repository/              # JPA Repositories
+ 
+ │   │   │   ├── service/                 # Business Logic
+ 
+ │   │   └── resources/
+
+ │   │       ├── application.properties   # DB Config
+ 
+ │   │       └── templates/               # Thymeleaf templates
+ 
+ │   └── test/                            # Unit & Integration Tests
+ 
+ ├── frontend/                            # React frontend
+ 
+ ├── pom.xml                              # Maven dependencies
+ 
+ └── README.md
+
 
  ⚙️ Installation & Setup
  
@@ -35,7 +71,7 @@ Other Tools: Lombok, Postman, Git
 
 1)Clone the repo
 
-git clone https://github.com/your-username/leave-management-system.git
+git clone git@github.com:SurajGhodge/lms.git
 
 cd leave-management-system
 
