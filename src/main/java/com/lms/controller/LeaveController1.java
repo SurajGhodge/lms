@@ -60,12 +60,13 @@ public class LeaveController1 {
 		return "applyLeaveForm";
 	}
 
-	@GetMapping("/history")
-	public String viewLeaveHistory(Model model) {
-		List<Leaves> leaves = leavesServiceImpl.getAllLeaves();
-		model.addAttribute("leaves", leaves);
-		return "viewLeaveHistory"; // thymeleaf page
+	@GetMapping("/history/{employeeId}")
+	public String viewLeaveHistory(@PathVariable Long employeeId, Model model) {
+	    List<Leaves> leaves = leavesServiceImpl.getLeavesByEmployeeId(employeeId);
+	    model.addAttribute("leaves", leaves);
+	    return "viewLeaveHistory"; 
 	}
+
 
 	// Delete leave
 	@GetMapping("/delete/{id}")

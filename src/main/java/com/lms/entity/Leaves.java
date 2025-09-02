@@ -22,7 +22,7 @@ public class Leaves {
 	private String status;//approved/rejected/cancelled/pending
 	private double days;
 	@ManyToOne
-	@JoinColumn(name = "employee_id")
+	@JoinColumn(name = "id", nullable=false)
 	private Employee employee;
 
 	public long getLeaveId() {

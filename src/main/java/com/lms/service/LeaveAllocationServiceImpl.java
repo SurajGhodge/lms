@@ -60,5 +60,6 @@ public class LeaveAllocationServiceImpl implements LeaveAllocationService {
         double updatedBalance = employee.getLeaveBalance() + leaveCount;
         employee.setLeaveBalance(updatedBalance);
         employeeRepository.save(employee);
+        System.out.println("credited successfully");
     }
 }

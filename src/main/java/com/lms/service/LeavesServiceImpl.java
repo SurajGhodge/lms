@@ -142,5 +142,9 @@ public class LeavesServiceImpl implements LeavesService {
 		Employee employee=employeeRepo.findByEmail(email);
 		return employee.getId();
 	}
+	  public List<Leaves> getLeavesByEmployeeId(Long employeeId) {
+	        return leavesRepository.findByEmployee_Id(employeeId);
+	    }
+
 
 }
