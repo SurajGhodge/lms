@@ -1,12 +1,18 @@
 Title: Leave Management System
+
 A Spring Boot-based Leave Management System that helps organizations manage employee leave requests, allocations, and approvals efficiently.
 
 🚀 Features
 ✅ Employee Registration & Login (Spring Security)
+
 ✅ Role-based access (Admin / Employee / Manager)
+
 ✅ Apply, Approve, Reject, and Cancel Leave Requests
+
 ✅ Leave Allocation & Balance Calculation (with business rules)
+
 ✅ Employee Dashboard with leave history
+
 ✅ Frontend Integration with Thyemleaf/Bootstrap
 
 🛠️ Tech Stack
@@ -68,4 +74,4 @@ http://localhost:8080/
 ![leave-type](screenshots/leave-type.png)
 ![manage-holiday](screenshots/manage-holiday.png)
 ![about](screenshots/about.png)
-![contact](screenshots/contact.png)
+![contact-us](screenshots/contact-us.png)
