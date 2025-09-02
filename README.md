@@ -16,21 +16,32 @@ A Spring Boot-based Leave Management System that helps organizations manage empl
 ✅ Frontend Integration with Thyemleaf/Bootstrap
 
 🛠️ Tech Stack
+
 Backend: Java 17, Spring Boot, Spring Security, Spring Data JPA, Hibernate
+
 Frontend: Thyemleaf + Bootstrap
+
 Database: MySQL
+
 Build Tool: Maven
+
 Other Tools: Lombok, Postman, Git
 
 
  ⚙️ Installation & Setup
+ 
 🔧 Backend (Spring Boot)
+
 1)Clone the repo
+
 git clone https://github.com/your-username/leave-management-system.git
+
 cd leave-management-system
 
 2)Configure MySQL in src/main/resources/application.properties:
+
 spring.application.name=lms
+
 # ========== Database Configuration ==========
 spring.datasource.url=jdbc:mysql://localhost:3306/lms?useSSL=false&serverTimezone=UTC
 spring.datasource.username=root
@@ -48,12 +59,15 @@ logging.level.org.hibernate.SQL=DEBUG
 logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
 3)Run the backend
+
 mvn spring-boot:run
 
 4)Backend available at:
+
 http://localhost:8080/
 
 📸 Screenshots / Demo
+
 ![index](screenshots/index.png)
 ![register](screenshots/register.png)
 ![login](screenshots/login.png)
