@@ -6,9 +6,13 @@ import java.util.Optional;
 import com.lms.entity.CompanyBranch;
 
 public interface CompanyBranchService {
-CompanyBranch saveBranch(CompanyBranch companyBranch);
-CompanyBranch updateCompanyBranch(CompanyBranch companyBranch,int branchId);
-CompanyBranch companyBranchById(int branchId);
-List<CompanyBranch> allCompanyBranch();
-Optional<CompanyBranch> findByAddressContainingIgnoreCase(String address);
+	CompanyBranch saveBranch(CompanyBranch companyBranch);
+
+	CompanyBranch updateCompanyBranch(CompanyBranch companyBranch, int branchId);
+
+	CompanyBranch companyBranchById(int branchId);
+
+	List<CompanyBranch> allCompanyBranch();
+
+	Optional<CompanyBranch> findByAddressContainingIgnoreCase(String address);
 }

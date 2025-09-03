@@ -8,8 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
 @Entity
+@Data
 public class Leaves {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,61 +27,6 @@ public class Leaves {
 	@JoinColumn(name = "id", nullable=false)
 	private Employee employee;
 
-	public long getLeaveId() {
-		return leaveId;
-	}
-	public void setLeaveId(long leaveId) {
-		this.leaveId = leaveId;
-	}
-	
-	public boolean isFd() {
-		return fd;
-	}
-	public void setFd(boolean fd) {
-		this.fd = fd;
-	}
-	public boolean isHd() {
-		return hd;
-	}
-	public void setHd(boolean hd) {
-		this.hd = hd;
-	}
-	public LocalDate getFromDate() {
-		return fromDate;
-	}
-	public void setFromDate(LocalDate fromDate) {
-		this.fromDate = fromDate;
-	}
-	public LocalDate getToDate() {
-		return toDate;
-	}
-	public void setToDate(LocalDate toDate) {
-		this.toDate = toDate;
-	}
-	public String getReason() {
-		return reason;
-	}
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public double getDays() {
-		return days;
-	}
-	public void setDays(double days) {
-		this.days = days;
-	}
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 	
 	
 

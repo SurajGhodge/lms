@@ -4,26 +4,25 @@ import com.lms.dto.CompanyBranchDto;
 import com.lms.entity.CompanyBranch;
 
 public class CompanyBranchMapper {
-	public CompanyBranch toEntity(CompanyBranchDto companyBranchDto)
-	{
-		CompanyBranch companyBranch=new CompanyBranch();
+	public CompanyBranch toEntity(CompanyBranchDto companyBranchDto) {
+		CompanyBranch companyBranch = new CompanyBranch();
 		companyBranch.setAddress(companyBranchDto.getAddress());
 		companyBranch.setBranchId(companyBranchDto.getBranchId());
 		companyBranch.setContactNumber(companyBranchDto.getContactNumber());
 		companyBranch.setEmail(companyBranchDto.getEmail());
 		return companyBranch;
 	}
-	
-	 public CompanyBranchDto toDto(CompanyBranch companyBranch) {
-	        if (companyBranch == null) {
-	            return null;
-	        }
 
-	        CompanyBranchDto dto = new CompanyBranchDto();
-	        dto.setBranchId(companyBranch.getBranchId());
-	        dto.setAddress(companyBranch.getAddress());
-	        dto.setContactNumber(companyBranch.getContactNumber());
-	        dto.setEmail(companyBranch.getEmail());
-	        return dto;
-	    }
+	public CompanyBranchDto toDto(CompanyBranch companyBranch) {
+		if (companyBranch == null) {
+			return null;
+		}
+
+		CompanyBranchDto dto = new CompanyBranchDto();
+		dto.setBranchId(companyBranch.getBranchId());
+		dto.setAddress(companyBranch.getAddress());
+		dto.setContactNumber(companyBranch.getContactNumber());
+		dto.setEmail(companyBranch.getEmail());
+		return dto;
+	}
 }

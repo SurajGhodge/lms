@@ -11,8 +11,7 @@ public class LmsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LmsApplication.class, args);
-		System.out.println("password is");
-		System.out.println(new BCryptPasswordEncoder().encode("1234"));
+		System.out.println("lms is runing");
 	}
 
 }

@@ -1,4 +1,5 @@
 package com.lms.security;
+
 import java.util.Arrays;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
@@ -6,9 +7,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.lms.entity.Employee;
+
 public class CustomUser implements UserDetails {
 	private Employee employee;
-	
+
 	public CustomUser(Employee employee) {
 		super();
 		this.employee = employee;
@@ -17,8 +19,8 @@ public class CustomUser implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		SimpleGrantedAuthority authority=new SimpleGrantedAuthority(employee.getRole());
-		
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(employee.getRole());
+
 		return Arrays.asList(authority);
 	}
 

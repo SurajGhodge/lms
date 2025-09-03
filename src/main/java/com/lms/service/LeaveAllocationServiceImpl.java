@@ -15,51 +15,51 @@ import java.util.List;
 @Service
 public class LeaveAllocationServiceImpl implements LeaveAllocationService {
 
-    @Autowired
-    private EmployeeRepo employeeRepository;
+	@Autowired
+	private EmployeeRepo employeeRepository;
 
-    @Autowired
-    private LeaveAllocationRepository leaveAllocationRepository;
+	@Autowired
+	private LeaveAllocationRepository leaveAllocationRepository;
 
-    public void allocateMonthlyLeaves(LocalDate currentDate) {
-        YearMonth currentYearMonth = YearMonth.from(currentDate);
-        LocalDate firstDayOfMonth = currentYearMonth.atDay(1);
+	public void allocateMonthlyLeaves(LocalDate currentDate) {
+		YearMonth currentYearMonth = YearMonth.from(currentDate);
+		LocalDate firstDayOfMonth = currentYearMonth.atDay(1);
 
-        List<Employee> allEmployees = employeeRepository.findAll();
+		List<Employee> allEmployees = employeeRepository.findAll();
 
-        for (Employee employee : allEmployees) {
-            if (employee.isPermanent()) {
-                LocalDate joiningDate = employee.getDateOfJoining();
+		for (Employee employee : allEmployees) {
+			if (employee.isPermanent()) {
+				LocalDate joiningDate = employee.getDateOfJoining();
 
-                // Allocate for existing employees
-                if (joiningDate.isBefore(firstDayOfMonth.minusMonths(1))) {
-                    allocateLeave(employee, 2, currentDate);
-                }
+				// Allocate for existing employees
+				if (joiningDate.isBefore(firstDayOfMonth.minusMonths(1))) {
+					allocateLeave(employee, 2, currentDate);
+				}
 
-                // Allocate for employees who joined last month
-                else if (YearMonth.from(joiningDate).equals(currentYearMonth.minusMonths(1))) {
-                    int joiningDay = joiningDate.getDayOfMonth();
-                    if (joiningDay < 15) {
-                        allocateLeave(employee, 2, currentDate);
-                    } else {
-                        allocateLeave(employee, 1, currentDate);
-                    }
-                }
-            }
-        }
-    }
+				// Allocate for employees who joined last month
+				else if (YearMonth.from(joiningDate).equals(currentYearMonth.minusMonths(1))) {
+					int joiningDay = joiningDate.getDayOfMonth();
+					if (joiningDay < 15) {
+						allocateLeave(employee, 2, currentDate);
+					} else {
+						allocateLeave(employee, 1, currentDate);
+					}
+				}
+			}
+		}
+	}
 
-    private void allocateLeave(Employee employee, int leaveCount, LocalDate allocationDate) {
-        LeaveAllocation allocation = new LeaveAllocation();
-        allocation.setEmployee(employee);
-        allocation.setLeaveType("PL");
-        allocation.setLeaveCount(leaveCount);
-        allocation.setAllocationMonth(YearMonth.from(allocationDate));
-        leaveAllocationRepository.save(allocation);
-        
-        double updatedBalance = employee.getLeaveBalance() + leaveCount;
-        employee.setLeaveBalance(updatedBalance);
-        employeeRepository.save(employee);
-        System.out.println("credited successfully");
-    }
+	private void allocateLeave(Employee employee, int leaveCount, LocalDate allocationDate) {
+		LeaveAllocation allocation = new LeaveAllocation();
+		allocation.setEmployee(employee);
+		allocation.setLeaveType("PL");
+		allocation.setLeaveCount(leaveCount);
+		allocation.setAllocationMonth(YearMonth.from(allocationDate));
+		leaveAllocationRepository.save(allocation);
+
+		double updatedBalance = employee.getLeaveBalance() + leaveCount;
+		employee.setLeaveBalance(updatedBalance);
+		employeeRepository.save(employee);
+		System.out.println("credited successfully");
+	}
 }

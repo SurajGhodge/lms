@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.lms.entity.LeaveType;
 import com.lms.repository.LeaveTypeRepository;
+
 @Service
 public class LeaveTypeServiceImpl implements LeaveTypeService {
 	@Autowired
 	private LeaveTypeRepository leaveTypeRepository;
+
 	@Override
 	public LeaveType add(LeaveType leaveType) {
 		// TODO Auto-generated method stub
@@ -20,11 +22,10 @@ public class LeaveTypeServiceImpl implements LeaveTypeService {
 
 	@Override
 	public LeaveType update(LeaveType leaveType, int leaveTypeId) {
-		
-		Optional<LeaveType> leaveTypeExist=leaveTypeRepository.findById(leaveTypeId);
-		if(leaveTypeExist.isPresent())
-		{
-			LeaveType leaveTypeUpdated=leaveTypeExist.get();
+
+		Optional<LeaveType> leaveTypeExist = leaveTypeRepository.findById(leaveTypeId);
+		if (leaveTypeExist.isPresent()) {
+			LeaveType leaveTypeUpdated = leaveTypeExist.get();
 			leaveTypeUpdated.setLeaveTypeName(leaveType.getLeaveTypeName());
 			return leaveTypeRepository.save(leaveTypeUpdated);
 		}
@@ -33,24 +34,22 @@ public class LeaveTypeServiceImpl implements LeaveTypeService {
 
 	@Override
 	public List<LeaveType> getAll() {
-	    return leaveTypeRepository.findAll(); // This usually returns empty list, never null
+		return leaveTypeRepository.findAll(); // This usually returns empty list, never null
 	}
 
 	@Override
 	public void deleteLeaveType(int leaveTypeId) {
-		Optional<LeaveType> leaveTypeExist=leaveTypeRepository.findById(leaveTypeId);
-		if(leaveTypeExist.isPresent())
-		{
-			LeaveType leaveType=leaveTypeExist.get();
+		Optional<LeaveType> leaveTypeExist = leaveTypeRepository.findById(leaveTypeId);
+		if (leaveTypeExist.isPresent()) {
+			LeaveType leaveType = leaveTypeExist.get();
 			leaveTypeRepository.delete(leaveType);
 		}
-		
-		
+
 	}
 
 	@Override
 	public LeaveType getById(int id) {
-	    return leaveTypeRepository.findById(id).orElse(null);
+		return leaveTypeRepository.findById(id).orElse(null);
 	}
 
 }

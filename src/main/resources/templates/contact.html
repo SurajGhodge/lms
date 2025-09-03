@@ -1,153 +1,160 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us - LMS</title>
-    <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Contact Us')}"></div>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f9fafc;
-        }
+<meta charset="UTF-8">
+<title>Contact Us - LMS</title>
+<div
+	th:replace="~{fragments/bootstrap :: bootstrapHeader('Contact Us')}"></div>
+<style>
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: #f9fafc;
+}
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
-            text-align: center;
-            padding: 70px 20px;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0px 6px 20px rgba(0,0,0,0.15);
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        .hero p {
-            margin-top: 12px;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+/* Hero */
+.hero {
+	background: linear-gradient(135deg, #6a11cb, #2575fc);
+	color: white;
+	text-align: center;
+	padding: 70px 20px;
+	border-radius: 0 0 30px 30px;
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
 
-        /* Contact Section */
-        .contact-section {
-            padding: 60px 20px;
-        }
-        .contact-card {
-            background: white;
-            border-radius: 18px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            transition: 0.4s ease;
-            height: 100%;
-        }
-        .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        .contact-card i {
-            font-size: 2rem;
-            color: #2575fc;
-            margin-bottom: 12px;
-        }
+.hero h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
 
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            border-radius: 18px;
-            padding: 40px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        }
-        .contact-form h3 {
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+.hero p {
+	margin-top: 12px;
+	font-size: 1.2rem;
+	opacity: 0.9;
+}
 
-        /* Map */
-        .map-container {
-            margin-top: 40px;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        }
-    </style>
+/* Contact Section */
+.contact-section {
+	padding: 60px 20px;
+}
+
+.contact-card {
+	background: white;
+	border-radius: 18px;
+	padding: 25px;
+	text-align: center;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+	transition: 0.4s ease;
+	height: 100%;
+}
+
+.contact-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card i {
+	font-size: 2rem;
+	color: #2575fc;
+	margin-bottom: 12px;
+}
+
+/* Contact Form */
+.contact-form {
+	background: white;
+	border-radius: 18px;
+	padding: 40px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form h3 {
+	font-weight: 700;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+/* Map */
+.map-container {
+	margin-top: 40px;
+	border-radius: 18px;
+	overflow: hidden;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <div th:replace="~{fragments/header :: siteHeader}"></div>
+	<!-- Header -->
+	<div th:replace="~{fragments/header :: siteHeader}"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Contact Us</h1>
-        <p>We’re here to help you with any queries about our Leave Management System</p>
-    </section>
+	<!-- Hero Section -->
+	<section class="hero">
+		<h1>Contact Us</h1>
+		<p>We’re here to help you with any queries about our Leave
+			Management System</p>
+	</section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row g-4 mb-5">
-                <div class="col-md-4">
-                    <div class="contact-card">
-                        <i class="bi bi-telephone-fill"></i>
-                        <h5>Phone</h5>
-                        <p>+91 98765 43210</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="contact-card">
-                        <i class="bi bi-envelope-fill"></i>
-                        <h5>Email</h5>
-                        <p>support@lms.com</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="contact-card">
-                        <i class="bi bi-geo-alt-fill"></i>
-                        <h5>Address</h5>
-                        <p>Pune, Maharashtra, India</p>
-                    </div>
-                </div>
-            </div>
+	<!-- Contact Section -->
+	<section class="contact-section">
+		<div class="container">
+			<div class="row g-4 mb-5">
+				<div class="col-md-4">
+					<div class="contact-card">
+						<i class="bi bi-telephone-fill"></i>
+						<h5>Phone</h5>
+						<p>+91 98765 43210</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact-card">
+						<i class="bi bi-envelope-fill"></i>
+						<h5>Email</h5>
+						<p>support@lms.com</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact-card">
+						<i class="bi bi-geo-alt-fill"></i>
+						<h5>Address</h5>
+						<p>Pune, Maharashtra, India</p>
+					</div>
+				</div>
+			</div>
 
-            <!-- Contact Form -->
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form">
-                        <h3>Send Us a Message</h3>
-                        <form th:action="@{/contact/submit}" method="post">
-                            <div class="mb-3">
-                                <label class="form-label">Your Name</label>
-                                <input type="text" class="form-control" name="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Your Email</label>
-                                <input type="email" class="form-control" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Subject</label>
-                                <input type="text" class="form-control" name="subject" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Message</label>
-                                <textarea class="form-control" name="message" rows="5" required></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary px-4">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+			<!-- Contact Form -->
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="contact-form">
+						<h3>Send Us a Message</h3>
+						<form th:action="@{/contact/submit}" method="post">
+							<div class="mb-3">
+								<label class="form-label">Your Name</label> <input type="text"
+									class="form-control" name="name" required>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Your Email</label> <input type="email"
+									class="form-control" name="email" required>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Subject</label> <input type="text"
+									class="form-control" name="subject" required>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Message</label>
+								<textarea class="form-control" name="message" rows="5" required></textarea>
+							</div>
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary px-4">Send
+									Message</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</section>
 
-           
-    </section>
+	<!-- Footer -->
+	<div th:replace="~{fragments/footer :: siteFooter}"></div>
 
-    <!-- Footer -->
-    <div th:replace="~{fragments/footer :: siteFooter}"></div>
-
-    <!-- Bootstrap Scripts -->
-    <div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
+	<!-- Bootstrap Scripts -->
+	<div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
 </body>
 </html>

@@ -11,13 +11,13 @@ import com.lms.repository.EmployeeRepo;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
-@Autowired
-private EmployeeRepo employeeRepository;
+	@Autowired
+	private EmployeeRepo employeeRepository;
+
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Employee employee=employeeRepository.findByEmail(email);
-		if(employee==null)
-		{
+		Employee employee = employeeRepository.findByEmail(email);
+		if (employee == null) {
 			throw new UsernameNotFoundException("User name Not found");
 		}
 		return new CustomUser(employee);

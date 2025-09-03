@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 @Component
 public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -18,16 +19,13 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		Set<String> role=AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-		if(role.contains("ROLE_ADMIN"))
-		{
+		Set<String> role = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+		if (role.contains("ROLE_ADMIN")) {
 			response.sendRedirect("/admin/profile");
-		}
-		else
-		{
+		} else {
 			response.sendRedirect("/user/profile");
 		}
-		
+
 	}
 
 }

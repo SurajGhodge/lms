@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Update Leave</title>
+<title>Update Leave</title>
 </head>
 <body>
-<h2>Update Leave</h2>
+	<h2>Update Leave</h2>
 
-<form th:action="@{'/leaves/update/' + ${leave.id}}" th:object="${leave}" method="post">
-    <label>Start Date:</label>
-    <input type="date" th:field="*{startDate}" required><br>
+	<form th:action="@{'/leaves/update/' + ${leave.id}}"
+		th:object="${leave}" method="post">
+		<label>Start Date:</label> <input type="date" th:field="*{startDate}"
+			required><br> <label>End Date:</label> <input
+			type="date" th:field="*{endDate}" required><br> <label>Reason:</label>
+		<textarea th:field="*{reason}" required></textarea>
+		<br>
 
-    <label>End Date:</label>
-    <input type="date" th:field="*{endDate}" required><br>
-
-    <label>Reason:</label>
-    <textarea th:field="*{reason}" required></textarea><br>
-
-    <button type="submit">Update</button>
-    <a th:href="@{/leaves/history}">Cancel</a>
-</form>
+		<button type="submit">Update</button>
+		<a th:href="@{/leaves/history}">Cancel</a>
+	</form>
 
 </body>
 </html>

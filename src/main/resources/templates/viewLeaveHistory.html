@@ -3,28 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Leave History</title>
-	<style type="text/css">
-   	body {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-           
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        
-   	</style>
+<style type="text/css">
+body {
+	background: linear-gradient(135deg, #6a11cb, #2575fc);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+</style>
 
 </head>
 <body>
- <!-- Header -->
-    <div th:replace="~{fragments/header :: siteHeader}"></div>
-<div
-	th:replace="~{fragments/bootstrap :: bootstrapHeader('Leave History')}"></div>
-	
+	<!-- Header -->
+	<div th:replace="~{fragments/header :: siteHeader}"></div>
+	<div
+		th:replace="~{fragments/bootstrap :: bootstrapHeader('Leave History')}"></div>
+
 	<div class="container mt-5">
-	
+
 		<h2 class="text-center mb-4 text-white">Leave History</h2>
 
 		<table class="table table-bordered table-hover shadow">
@@ -70,8 +67,8 @@
 			</tbody>
 		</table>
 		<div class="mb-3 mt-3 text-center">
-    <a th:href="@{/user/manageLeave}" class="btn btn-warning">Back</a>
-</div>
+			<a th:href="@{/user/manageLeave}" class="btn btn-warning">Back</a>
+		</div>
 	</div>
 	<div th:replace="~{fragments/bootstrap :: bootstrapScripts}"></div>
 </body>

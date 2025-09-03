@@ -2,75 +2,82 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <style>
-        body {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .profile-card {
-        
-            max-width: 800px;
-            margin: 40px auto;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .profile-header {
-            background: linear-gradient(135deg, #007bff, #00d4ff);
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
-        }
-        .profile-header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-bottom: 15px;
-        }
-        .stats-card {
-            border-radius: 15px;
-        }
-    </style>
+body {
+	background: linear-gradient(135deg, #1e3c72, #2a5298);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-card {
+	max-width: 800px;
+	margin: 40px auto;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.profile-header {
+	background: linear-gradient(135deg, #007bff, #00d4ff);
+	padding: 40px 20px;
+	text-align: center;
+	color: white;
+}
+
+.profile-header img {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	border: 4px solid white;
+	margin-bottom: 15px;
+}
+
+.stats-card {
+	border-radius: 15px;
+}
+</style>
 </head>
 <body>
-    <!-- Bootstrap Header -->
-    <div th:replace="~{fragments/bootstrap :: bootstrapHeader('Admin Profile')}"></div>
+	<!-- Bootstrap Header -->
+	<div
+		th:replace="~{fragments/bootstrap :: bootstrapHeader('Admin Profile')}"></div>
 
-    <!-- Site Header -->
-    <div th:replace="~{fragments/admin_header :: siteHeader}"></div>
+	<!-- Site Header -->
+	<div th:replace="~{fragments/admin_header :: siteHeader}"></div>
 
-<br>
-<br>
-<br>
- <div class="container my-5">
-    <h2 class="text-center mb-4 fw-bold text-white">Manage Employee</h2>
-    <div class="row g-4 justify-content-center">
-        
-        <!-- Add Employee -->
-        <div class="col-md-4">
-            <div class="card h-100 text-white bg-primary">
-                <div class="card-body d-flex flex-column justify-content-center">
-                    <h4 class="card-title">Add New Employee</h4>
-                    <p class="card-text">Add new employee modify existing employee easily.</p>
-                    <a th:href="@{/employee/list}" class="btn btn-light btn-custom mt-auto">Add</a>
-                </div>
-            </div>
-        </div>
+	<br>
+	<br>
+	<br>
+	<div class="container my-5">
+		<h2 class="text-center mb-4 fw-bold text-white">Manage Employee</h2>
+		<div class="row g-4 justify-content-center">
 
-        <!-- Manage Branch -->
-        <div class="col-md-4">
-            <div class="card h-100 text-white bg-success">
-                <div class="card-body d-flex flex-column justify-content-center">
-                    <h4 class="card-title">Add/Modify Branch</h4>
-                    <p class="card-text">Add or modify branch in system</p>
-                    <a th:href="@{/branches/all}" class="btn btn-light btn-custom mt-auto">Manage Branch</a>
-                </div>
-            </div>
-        </div>
+			<!-- Add Employee -->
+			<div class="col-md-4">
+				<div class="card h-100 text-white bg-primary">
+					<div class="card-body d-flex flex-column justify-content-center">
+						<h4 class="card-title">Add New Employee</h4>
+						<p class="card-text">Add new employee modify existing employee
+							easily.</p>
+						<a th:href="@{/employee/list}"
+							class="btn btn-light btn-custom mt-auto">Add</a>
+					</div>
+				</div>
+			</div>
 
-    </div>
-</div>
+			<!-- Manage Branch -->
+			<div class="col-md-4">
+				<div class="card h-100 text-white bg-success">
+					<div class="card-body d-flex flex-column justify-content-center">
+						<h4 class="card-title">Add/Modify Branch</h4>
+						<p class="card-text">Add or modify branch in system</p>
+						<a th:href="@{/branches/all}"
+							class="btn btn-light btn-custom mt-auto">Manage Branch</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 </body>
 </html>

@@ -1,33 +1,12 @@
 package com.lms.dto;
 
+import lombok.Data;
+
+@Data
 public class CompanyBranchDto {
 	private int branchId;
 	private String address;
 	private String contactNumber;
 	private String email;
-	public int getBranchId() {
-		return branchId;
-	}
-	public void setBranchId(int branchId) {
-		this.branchId = branchId;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getContactNumber() {
-		return contactNumber;
-	}
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+
 }

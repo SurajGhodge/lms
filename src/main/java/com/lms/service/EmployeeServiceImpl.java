@@ -15,12 +15,14 @@ import com.lms.repository.EmployeeRepo;
 
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpSession;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
-EmployeeRepo employeeRepo;
+	EmployeeRepo employeeRepo;
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Override
 	public Employee saveEmployee(Employee employee) {
 		// TODO Auto-generated method stub
@@ -31,58 +33,57 @@ EmployeeRepo employeeRepo;
 
 	@Override
 	public Employee updateEmployee(Long id, Employee updatedEmployee) {
-		 Optional<Employee> existingEmployeeOpt = employeeRepo.findById(id);
-	        if (existingEmployeeOpt.isPresent()) {
-	            Employee existingEmployee = existingEmployeeOpt.get();
-	            // update fields
-	            existingEmployee.setName(updatedEmployee.getName());
-	           // existingEmployee.setEmployeeId(updatedEmployee.getEmployeeId());
-	            existingEmployee.setPermanentAddress(updatedEmployee.getPermanentAddress());
-	            existingEmployee.setCurrentAddress(updatedEmployee.getCurrentAddress());
-	            existingEmployee.setMobileNumber(updatedEmployee.getMobileNumber());
-	            existingEmployee.setEmergencyContact(updatedEmployee.getEmergencyContact());
-	            existingEmployee.setDateOfBirth(updatedEmployee.getDateOfBirth());
-	            existingEmployee.setDateOfJoining(updatedEmployee.getDateOfJoining());
-	            existingEmployee.setEmploymentStatus(updatedEmployee.getEmploymentStatus());
-	            existingEmployee.setEmployeeStatus(updatedEmployee.getEmployeeStatus());
-	            existingEmployee.setEmploymentType(updatedEmployee.getEmploymentType());
-	            existingEmployee.setBranch(updatedEmployee.getBranch());
-	            existingEmployee.setBloodGroup(updatedEmployee.getBloodGroup());
-	            existingEmployee.setReportingAuthority(updatedEmployee.getReportingAuthority());
-	            existingEmployee.setLeaveBalance(updatedEmployee.getLeaveBalance());
-	            existingEmployee.setRole(updatedEmployee.getRole());
-	            existingEmployee.setEmail(updatedEmployee.getEmail());
-	            return employeeRepo.save(existingEmployee);
-	        } else {
-	            throw new EmployeeNotFoundException("Employee not found with ID: " + id);
-	        }
+		Optional<Employee> existingEmployeeOpt = employeeRepo.findById(id);
+		if (existingEmployeeOpt.isPresent()) {
+			Employee existingEmployee = existingEmployeeOpt.get();
+			existingEmployee.setName(updatedEmployee.getName());
+			existingEmployee.setPermanentAddress(updatedEmployee.getPermanentAddress());
+			existingEmployee.setCurrentAddress(updatedEmployee.getCurrentAddress());
+			existingEmployee.setMobileNumber(updatedEmployee.getMobileNumber());
+			existingEmployee.setEmergencyContact(updatedEmployee.getEmergencyContact());
+			existingEmployee.setDateOfBirth(updatedEmployee.getDateOfBirth());
+			existingEmployee.setDateOfJoining(updatedEmployee.getDateOfJoining());
+			existingEmployee.setEmploymentStatus(updatedEmployee.getEmploymentStatus());
+			existingEmployee.setEmployeeStatus(updatedEmployee.getEmployeeStatus());
+			existingEmployee.setEmploymentType(updatedEmployee.getEmploymentType());
+			existingEmployee.setBranch(updatedEmployee.getBranch());
+			existingEmployee.setBloodGroup(updatedEmployee.getBloodGroup());
+			existingEmployee.setReportingAuthority(updatedEmployee.getReportingAuthority());
+			existingEmployee.setLeaveBalance(updatedEmployee.getLeaveBalance());
+			existingEmployee.setRole(updatedEmployee.getRole());
+			existingEmployee.setEmail(updatedEmployee.getEmail());
+			return employeeRepo.save(existingEmployee);
+		} else {
+			throw new EmployeeNotFoundException("Employee not found with ID: " + id);
+		}
 	}
 
 	@Override
 	public void deleteEmployee(Long id) {
 		// TODO Auto-generated method stub
 		if (!employeeRepo.existsById(id)) {
-            throw new EmployeeNotFoundException("Employee not found with ID: " + id);
-        }
-        employeeRepo.deleteById(id);
-    
+			throw new EmployeeNotFoundException("Employee not found with ID: " + id);
+		}
+		employeeRepo.deleteById(id);
+
 	}
 
 	@Override
 	public Employee getEmployeeById(Long id) {
-		 return employeeRepo.findById(id)
-	                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with ID: " + id));
+		return employeeRepo.findById(id)
+				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with ID: " + id));
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		 return employeeRepo.findAll();
+		return employeeRepo.findAll();
 	}
 
 	@Override
 	public void removeSessionMessage() {
 		// TODO Auto-generated method stub
-	HttpSession session=	((ServletRequestAttributes)(RequestContextHolder.getRequestAttributes())).getRequest().getSession();
+		HttpSession session = ((ServletRequestAttributes) (RequestContextHolder.getRequestAttributes())).getRequest()
+				.getSession();
 		session.removeAttribute("msg");
 	}
 
